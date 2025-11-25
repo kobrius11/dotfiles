@@ -41,6 +41,12 @@ map.set('i', 'kk', '<Esc>')
 map.set("n", "gD", vim.lsp.buf.definition, { desc = "LSP: Go to definition" })
 map.set("n", "grt", vim.lsp.buf.type_definition, { desc = "LSP: Type Definition" })
 
+-- buffer delete
+map.set("n", "bd", vim.cmd.bdelete, { desc = "Delete active buffer" })
+
+-- buffer create
+map.set("n", "bn", vim.cmd.tabnew, { desc = "Delete active buffer" })
+
 -- buffer navigation
 map.set("n", "b]", function()
   vim.cmd.bnext()

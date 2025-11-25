@@ -46,6 +46,31 @@ require("lazy").setup({
       lazy = false,
       build = ":TSUpdate"
     },
+    {
+      "nosduco/remote-sshfs.nvim",
+      config = function() require('plugins.remote_sshfs') end,
+      dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+      opts = {},
+    },
+    {
+      "NeogitOrg/neogit",
+      lazy = true,
+      dependencies = {
+        "nvim-lua/plenary.nvim",         -- required
+        "sindrets/diffview.nvim",        -- optional - Diff integration
+
+        -- Only one of these is needed.
+        "nvim-telescope/telescope-- .nvim", -- optional
+        -- "ibhagwan/fzf-lua",              -- optional
+        -- "nvim-mini/mini.pick",           -- optional
+        -- "folke/snacks.nvim",             -- optional
+      },
+      cmd = "Neogit",
+      keys = {
+        { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" }
+      },
+    },
+
     -- themes
 --    {
 --     "catppuccin/nvim",
