@@ -8,7 +8,7 @@ precmd() { vcs_info } # Updates git info before every prompt
 #precmd_functions+=( precmd_vcs_info )
 
 # format vcs prompt
-zstyle ':vcs_info:git:*' formats ' %b %c %u %m %Q'
+zstyle ':vcs_info:git:*' formats ' %b'
 
 # Prompt
 NEWLINE=$'\n'
@@ -20,7 +20,7 @@ PATH_BLOCK_STYLE='%K{#4c566a}'
 TIME='%D{%_I:%M%p}'
 
 
-GIT_PROMPT='%K{#3b4252}%F{#ECEFF4} ${vcs_info_msg_0_}'
-PROMPT="$NEWLINE$TIME_BLOCK_STYLE$TIME $USER_BLOCK_STYLE %n $PATH_BLOCK_STYLE %~ $GIT_PROMPT %f%k ❯"
+GIT_PROMPT='%K{#3b4252}%F{#ECEFF4} ${vcs_info_msg_0_} %f%k'
+PROMPT="$NEWLINE$TIME_BLOCK_STYLE$TIME $USER_BLOCK_STYLE %n $PATH_BLOCK_STYLE %~ $GIT_PROMPT ❯ "
 
 

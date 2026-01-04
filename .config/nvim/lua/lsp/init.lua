@@ -1,6 +1,8 @@
 require("lsp.lua_ls")
 require("lsp.ts_ls")
 require("lsp.clangd")
+require("lsp.ruff")
+require("lsp.basedpyright")
 
 -- global lsp config
 vim.lsp.config('*', {
