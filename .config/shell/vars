@@ -1,5 +1,6 @@
 
 export ZSH_PLUGINS_DIR="/usr/share/zsh/plugins"
+# export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/.vimrc" | source $MYVIMRC'
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
