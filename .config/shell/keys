@@ -1,0 +1,12 @@
+
+bindkey -- "\e[H"     beginning-of-line                 #HOME
+bindkey -- "\e[F"     end-of-line                       #END
+bindkey -- "\e[2~"    overwrite-mode                    #INS
+bindkey -- "\e[3~"    delete-char                       #DEL
+bindkey -- "\e[3;2~"  kill-word                         #SHIFT+DEL
+bindkey -- "\e[3;6~"  backward-kill-word                #CTRL+SHIFT+DEL
+bindkey -- "\e[1;5C"  forward-word                      #CTRL+ARROW_RIGHT
+bindkey -- "\e[1;5D"  backward-word                     #CTRL+ARROW_LEFT
+bindkey -- "\e[5~"    history-beginning-search-backward #PAGEUP
+bindkey -- "\e[6~"    history-beginning-search-forward  #PAGEDOWN
+bindkey -M menuselect '^[' send-break
