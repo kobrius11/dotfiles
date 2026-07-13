@@ -55,3 +55,73 @@ end, {})
 map.set("n", "b[", function()
   vim.cmd.bprevious()
 end, {})
+
+-- PLUGINS
+local function visual_cursors_with_delay()
+  -- Execute the vm-visual-cursors command.
+  vim.cmd('silent! execute "normal! \\<Plug>(VM-Visual-Cursors)"')
+  -- Introduce delay via VimScript's 'sleep' (set to 500 milliseconds here).
+  vim.cmd('sleep 200m')
+  -- Press 'A' in normal mode after the delay.
+  vim.cmd('silent! execute "normal! A"')
+end
+
+
+local remote_sshfs = require('remote-sshfs.api')
+local telescope = require('telescope.builtin')
+local undotree = require('undotree')
+local harpoon = require('harpoon.ui')
+local harpoon_mark = require('harpoon.mark')
+local wk = require('which-key')
+wk.register({
+  r = {
+    name = 'remote-sshfs',
+    c = {remote_sshfs.connect, "Connect to remote sshfs"},
+    d = {remote_sshfs.disconnect, "Disconnect from remote sshfs"},
+    e = {remote_sshfs.edit, "Edit ssh config"},
+  },
+  f = {
+    name = 'telescope',
+    f = {telescope.find_files, 'Telescope find files'},
+    p = {telescope.git_files, 'Git file search'},
+    g = {telescope.live_grep, 'Telescope live grep'},
+    b = {telescope.buffers, 'Telescope buffers'},
+  },
+  h = {
+    name = 'harpoon',
+    n = {harpoon.nav_next, 'Navigate next'},
+    p = {harpoon.nav_prev, 'Navigate previuos'},
+    x = {harpoon_mark.add_file, 'Mark file'},
+  },
+  n = {
+    name = 'NvimTree',
+    t = {':NvimTreeToggle<CR>', 'Toggle Neovim Tree', mode = { "n", "i" }}
+  },
+  g = {
+    name = 'neogit',
+    g = {'<cmd>Neogit<cr>', 'Show Neogit UI'},
+  },
+  l = {
+    name = "Lspsaga",
+    c = { "<cmd>Lspsaga code_action<cr>", "Code Action" },
+    o = { "<cmd>Lspsaga outline<cr>", "Outline" },
+    r = { "<cmd>Lspsaga rename<cr>", "Rename" },
+    d = { "<cmd>Lspsaga goto_definition<cr>", "Lsp GoTo Definition" },
+    f = { "<cmd>Lspsaga finder<cr>", "Lsp Finder" },
+    p = { "<cmd>Lspsaga preview_definition<cr>", "Preview Definition" },
+    s = { "<cmd>Lspsaga signature_help<cr>", "Signature Help" },
+    w = { "<cmd>Lspsaga show_workspace_diagnostics<cr>", "Show Workspace Diagnostics" },
+  },
+  m = {
+    name = "Visual Multi",
+    a = { "<Plug>(VM-Select-All)<Tab>", "Select All", mode = { "n" } },
+    r = { "<Plug>(VM-Start-Regex-Search)", "Start Regex Search", mode = { "n" } },
+    p = { "<Plug>(VM-Add-Cursor-At-Pos)", "Add Cursor At Pos", mode = { "n" } },
+    v = { visual_cursors_with_delay, "Visual Cursors", mode = { "v" } },
+    o = { "<Plug>(VM-Toggle-Mappings)", "Toggle Mapping", mode = { "n" } },
+  },
+  u = {
+    name = "Undotree",
+    {undotree.toggle, "Toggle undotree"},
+  },
+}, { prefix = '<leader>' })

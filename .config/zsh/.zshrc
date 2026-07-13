@@ -37,9 +37,6 @@ HISTCONTROL=ignoreboth
 # zsh-autosuggestions
 [ -d "$ZSH_PLUGINS_DIR/zsh-autosuggestions" ] && source "$ZSH_PLUGINS_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
-bindkey              '^I' menu-select
-bindkey "$terminfo[kcbt]" menu-select
-
 # zsh-syntax-higlighting
 [ -d "$ZSH_PLUGINS_DIR/zsh-syntax-highlighting" ] && source "$ZSH_PLUGINS_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
@@ -50,5 +47,5 @@ echo -e "${NEWLINE}\x1b[38;5;137m\x1b[48;5;0m it's$(print -P '%D{%_I:%M%P}\n') \
 # fish terminal
 #eval "$(starship init zsh)"
 
-# opencode
-export PATH=/home/kobrius11/.opencode/bin:$PATH
+
+. "$HOME/.local/share/../bin/env"
