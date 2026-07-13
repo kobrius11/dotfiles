@@ -167,16 +167,15 @@ return {
       vim.opt.timeout = true
       vim.opt.timeoutlen = 300
     end,
-    opts = {},
-    keys = {
-      {
-        "<leader>?",
-        function()
-          require("which-key").show({
-            global = false,
-          })
-        end,
-        desc = "Buffer-local keymaps",
+    opts = {
+      spec = {
+        { "<leader>f", group = "Telescope" },
+        { "<leader>g", group = "Git" },
+        { "<leader>h", group = "Harpoon" },
+        { "<leader>l", group = "LSP" },
+        { "<leader>m", group = "Visual Multi" },
+        { "<leader>n", group = "NvimTree" },
+        { "<leader>r", group = "Remote SSHFS" },
       },
     },
   },
