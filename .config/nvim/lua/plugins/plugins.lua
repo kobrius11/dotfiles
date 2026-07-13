@@ -153,20 +153,7 @@ return {
 
     vim.api.nvim_create_autocmd("FileType", {
       group = group,
-      pattern = {
-        "c",
-        "cpp",
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "python",
-        "lua",
-        "vim",
-        "help",
-        "query",
-        "markdown",
-      },
+      pattern = treesitter_filetypes,
       callback = function(args)
         local ok, err = pcall(vim.treesitter.start, args.buf)
 
