@@ -154,7 +154,6 @@ return {
     vim.api.nvim_create_autocmd("FileType", {
       group = group,
       pattern = {
-        "sh",
         "c",
         "cpp",
         "javascript",
