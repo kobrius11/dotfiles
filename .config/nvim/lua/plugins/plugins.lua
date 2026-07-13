@@ -4,7 +4,7 @@ return {
   {
     'nvimdev/lspsaga.nvim',
     dependencies = {
-      'nvim-treesitter/nvim-treesitter',
+      'neovim-treesitter/nvim-treesitter',
       'nvim-tree/nvim-web-devicons'
     }
   },
@@ -36,10 +36,36 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
   {
-    "nvim-treesitter/nvim-treesitter",
+    "neovim-treesitter/nvim-treesitter",
+    dependencies = {
+      "neovim-treesitter/treesitter-parser-registry",
+    },
     lazy = false,
-    build = ":TSUpdate"
-  },
+    build = ":TSUpdate",
+    config = function()
+      local group = vim.api.nvim_create_augroup("treesitter-start", {
+        clear = true,
+      })
+
+    vim.api.nvim_create_autocmd("FileType", {
+      group = group,
+      pattern = {
+        "bash",
+        "sh",
+        "c",
+        "cpp",
+        "javascript",
+        "typescript",
+        "lua",
+        "markdown",
+        "python",
+      },
+      callback = function(args)
+        pcall(vim.treesitter.start, args.buf)
+      end,
+    })
+   end,
+  }, 
   {
     "nosduco/remote-sshfs.nvim",
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
