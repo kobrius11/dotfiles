@@ -133,28 +133,56 @@ return {
   -- Tree-sitter
   ---------------------------------------------------------------------------
 
-  {
-    "nvim-treesitter/nvim-treesitter",
-    lazy = false,
-    build = ":TSUpdate",
-    config = function()
-      -- Installs only missing parsers. It does not reinstall them every time.
-      require("nvim-treesitter").install(treesitter_parsers)
+{
+  "nvim-treesitter/nvim-treesitter",
+  lazy = false,
+  build = ":TSUpdate",
 
-      local group = vim.api.nvim_create_augroup("treesitter-highlighting", {
-        clear = true,
-      })
+  config = function()
+    require("nvim-treesitter").setup({
+      install_dir = vim.fn.stdpath("data") .. "/site",
+    })
 
-      vim.api.nvim_create_autocmd("FileType", {
-        group = group,
-        pattern = treesitter_filetypes,
-        callback = function()
-          -- Do not terminate startup when a parser is temporarily unavailable.
-          pcall(vim.treesitter.start)
-        end,
-      })
-    end,
-  },
+    -- Neovim filetype is "sh"; Tree-sitter parser is named "bash".
+    vim.treesitter.language.register("bash", "sh")
+
+    local group = vim.api.nvim_create_augroup(
+      "treesitter-highlighting",
+      { clear = true }
+    )
+
+    vim.api.nvim_create_autocmd("FileType", {
+      group = group,
+      pattern = {
+        "sh",
+        "c",
+        "cpp",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "python",
+        "lua",
+        "vim",
+        "help",
+        "query",
+        "markdown",
+      },
+      callback = function(args)
+        local ok, err = pcall(vim.treesitter.start, args.buf)
+
+        if not ok then
+          vim.schedule(function()
+            vim.notify(
+              "Tree-sitter unavailable: " .. tostring(err),
+              vim.log.levels.WARN
+            )
+          end)
+        end
+      end,
+    })
+  end,
+},
 
   ---------------------------------------------------------------------------
   -- Interface
