@@ -41,7 +41,7 @@ HISTCONTROL=ignoreboth
 [ -d "$ZSH_PLUGINS_DIR/zsh-syntax-highlighting" ] && source "$ZSH_PLUGINS_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # zsh-autocomplete
-[ -d "$ZSH_PLUGINS_DIR/zsh-autocomplete" ] && source "$ZSH_PLUGINS_DIR/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
+#  [ -d "$ZSH_PLUGINS_DIR/zsh-autocomplete" ] && source "$ZSH_PLUGINS_DIR/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 
 echo -e "${NEWLINE}\x1b[38;5;137m\x1b[48;5;0m it's$(print -P '%D{%_I:%M%P}\n') \x1b[38;5;180m\x1b[48;5;0m $(uptime -p | cut -c 4-) \x1b[38;5;223m\x1b[48;5;0m $(uname -r) \033[0m"
 # fish terminal

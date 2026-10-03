@@ -1,5 +1,13 @@
 # default programs
-export EDITOR="nvim"
+export EDITOR="helix"
+export VISUAL="helix"
+export TZ='Europe/Vilnius'
+export LSCOLORS='ExGxbEaECxxEhEhBaDaCaD'
+export PATH="$PATH:$XDG_CONFIG_HOME/scripts"
+export PAGER='less -R -use-color'
+export MANPAGER='less -R --use-color -Dd+G -Du+B'
+export MANROFFOPT='-P -c'
+export LC_ALL=en_US.UTF-8
 
 # follow XDG base dir specification
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -31,8 +39,4 @@ export PGPASSFILE="$XDG_CONFIG_HOME/pg/pgpass"
 export PGSERVICEFILE="$XDG_CONFIG_HOME/pg/pg_service.conf"
 export KUBECONFIG="$XDG_CONFIG_HOME/kube" 
 export KUBECACHEDIR="$XDG_CACHE_HOME/kube"
-
-
-# add scripts to path
-export PATH="$XDG_CONFIG_HOME/scripts:$PATH"
 

@@ -30,3 +30,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+-- change current directory
+vim.api.nvim_create_autocmd('VimEnter', {
+  desc = 'cd to passed $PWD when vim starts.',
+  group = vim.api.nvim_create_augroup('cd-to-pwd', { clear = true}),
+  callback = function()
+    local arg = vim.fn.argv(0)
+
+    if arg ~= '' and vim.fn.isdirectory(arg) == 1 then
+      local pwd = vim.fn.fnamemodify(arg, ':p')
+      vim.api.nvim_set_current_dir(pwd)
+    end
+  end,
+})

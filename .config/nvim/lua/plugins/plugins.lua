@@ -4,6 +4,7 @@ local lsp_servers = {
   "lua_ls",
   "ts_ls",
   "clangd",
+  "docker_language_server",
 }
 
 local treesitter_parsers = {
