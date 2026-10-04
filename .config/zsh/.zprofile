@@ -1,14 +1,4 @@
 # default programs
-export EDITOR="helix"
-export VISUAL="helix"
-export TZ='Europe/Vilnius'
-export LSCOLORS='ExGxbEaECxxEhEhBaDaCaD'
-export PATH="$PATH:$XDG_CONFIG_HOME/scripts"
-export PAGER='less -R -use-color'
-export MANPAGER='less -R --use-color -Dd+G -Du+B'
-export MANROFFOPT='-P -c'
-export LC_ALL=en_US.UTF-8
-
 # follow XDG base dir specification
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -16,6 +6,16 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_DATA_DIRS="/usr/local/share:/usr/share:$HOME/.local/share"
 export XDG_CONFIG_DIRS="/etc/xdg"
+
+# export EDITOR="helix"
+# export VISUAL="helix"
+export TZ='Europe/Vilnius'
+export LSCOLORS='ExGxbEaECxxEhEhBaDaCaD'
+export PATH="$PATH:$XDG_CONFIG_HOME/scripts"
+export PAGER='less -R -use-color'
+export MANPAGER='less -R --use-color -Dd+G -Du+B'
+export MANROFFOPT='-P -c'
+export LANG=en_US.UTF-8
 
 # history files
 export LESSHISTFILE="$XDG_CACHE_HOME/less_history"
@@ -37,6 +37,6 @@ export PSQLRC="$XDG_CONFIG_HOME/pg/psqlrc"
 export PSQL_HISTORY="$XDG_STATE_HOME/psql_history"
 export PGPASSFILE="$XDG_CONFIG_HOME/pg/pgpass"
 export PGSERVICEFILE="$XDG_CONFIG_HOME/pg/pg_service.conf"
-export KUBECONFIG="$XDG_CONFIG_HOME/kube" 
+export KUBECONFIG="$XDG_CONFIG_HOME/kube/config" 
 export KUBECACHEDIR="$XDG_CACHE_HOME/kube"
 
